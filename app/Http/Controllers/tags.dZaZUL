@@ -1,0 +1,153 @@
+QuestionController	QuestionController.php	/^class QuestionController extends Controller$/;"	c
+register	QuestionController.php	/^    public function register($id, Request $request){$/;"	f
+form	QuestionController.php	/^        $form = Form::find($id);$/;"	v
+validator	QuestionController.php	/^            $validator = Validator::make($request->all(), [$/;"	v
+messages	QuestionController.php	/^                $messages = $validator->errors();$/;"	v
+arr	QuestionController.php	/^                $arr = array("status" => 0, "message" => $messages->first());$/;"	v
+question	QuestionController.php	/^                $question = new Questions;$/;"	v
+arr	QuestionController.php	/^                $arr = array("status" => 1, "message" => $question->id);$/;"	v
+arr	QuestionController.php	/^            $arr = array("status" => 0, "message" => "form not found");$/;"	v
+AnswerController	AnswerController.php	/^class AnswerController extends Controller$/;"	c
+register	AnswerController.php	/^    public function register($question_id, $submitted_id, Request $request){$/;"	f
+validator	AnswerController.php	/^        $validator = Validator::make($request->all(), [$/;"	v
+messages	AnswerController.php	/^            $messages = $validator->errors();$/;"	v
+arr	AnswerController.php	/^            $arr = array("status" => 0, "message" => $messages->first());$/;"	v
+arr	AnswerController.php	/^	#    $arr = array("status" => 0, "message" => "This question was already answered");$/;"	v
+answer	AnswerController.php	/^            $answer = new Answers;$/;"	v
+arr	AnswerController.php	/^            $arr = array("status" => 1, "message" => $answer->id);$/;"	v
+LoginController	LoginController.php	/^class LoginController extends Controller$/;"	c
+register	LoginController.php	/^    public function register(Request $request){$/;"	f
+validator	LoginController.php	/^        $validator = Validator::make($request->all(), [$/;"	v
+messages	LoginController.php	/^            $messages = $validator->errors();$/;"	v
+arr	LoginController.php	/^            $arr = array("status" => 0, "message" => $messages->first());$/;"	v
+name	LoginController.php	/^            $name = $request->input("name");$/;"	v
+email	LoginController.php	/^            $email = $request->input("email");$/;"	v
+password	LoginController.php	/^            $password = md5($request->input("password"));$/;"	v
+birth_date	LoginController.php	/^            $birth_date = $request->input("birth_date");$/;"	v
+school	LoginController.php	/^            $school = $request->input("school");$/;"	v
+school_id	LoginController.php	/^            $school_id = $request->input("school_id");$/;"	v
+grad_year	LoginController.php	/^            $grad_year = $request->input("grad_year");$/;"	v
+gender	LoginController.php	/^            $gender = $request->input("gender");$/;"	v
+phone_number	LoginController.php	/^            $phone_number = $request->input("phone_number");$/;"	v
+counselor_id	LoginController.php	/^            $counselor_id = $request->input("counselor_id");$/;"	v
+user	LoginController.php	/^            $user = new User;$/;"	v
+arr	LoginController.php	/^            $arr = array("status" => 1, "message" => $user->id);$/;"	v
+login	LoginController.php	/^    public function login(Request $request){$/;"	f
+email	LoginController.php	/^        $email = $request->input("email");$/;"	v
+password	LoginController.php	/^        $password = md5($request->input("password"));$/;"	v
+user	LoginController.php	/^        $user = User::where("email", $email)->where("password", $password)->first();$/;"	v
+updateProfile	LoginController.php	/^    public function updateProfile($id, Request $request){$/;"	f
+user	LoginController.php	/^        $user = User::find($id);$/;"	v
+validator	LoginController.php	/^            $validator = Validator::make($request->all(), [$/;"	v
+messages	LoginController.php	/^                $messages = $validator->errors();$/;"	v
+arr	LoginController.php	/^                $arr = array("status" => 0, "message" => $messages->first());$/;"	v
+name	LoginController.php	/^                $name = $request->input("name");$/;"	v
+birth_date	LoginController.php	/^                $birth_date = $request->input("birth_date");$/;"	v
+school	LoginController.php	/^                $school = $request->input("school");$/;"	v
+school_id	LoginController.php	/^                $school_id = $request->input("school_id");$/;"	v
+grad_year	LoginController.php	/^                $grad_year = $request->input("grad_year");$/;"	v
+gender	LoginController.php	/^                $gender = $request->input("gender");$/;"	v
+phone_number	LoginController.php	/^                $phone_number = $request->input("phone_number");$/;"	v
+counselor_id	LoginController.php	/^                $counselor_id = $request->input("counselor_id");$/;"	v
+arr	LoginController.php	/^                $arr = array("status" => 1, "message" => $user->id);$/;"	v
+arr	LoginController.php	/^            $arr = array("status" => 0, "message" => "user not found");$/;"	v
+getProfile	LoginController.php	/^    public function getProfile($id){$/;"	f
+user	LoginController.php	/^        $user = User::find($id);$/;"	v
+getUsersByCounselorID	LoginController.php	/^    public function getUsersByCounselorID($id){$/;"	f
+users	LoginController.php	/^    	$users = User::where("counselor_id", $id)->get();$/;"	v
+index	LoginController.php	/^	$index = 0;$/;"	v
+SubmitController	SubmitController.php	/^class SubmitController extends Controller$/;"	c
+register	SubmitController.php	/^    public function register($user_id, $form_id){$/;"	f
+submit	SubmitController.php	/^        $submit = new Submitted;$/;"	v
+arr	SubmitController.php	/^        $arr = array("status" => 1, "message" => $submit->id);$/;"	v
+submit	SubmitController.php	/^    public function submit($id){$/;"	f
+submit	SubmitController.php	/^        $submit = Submitted::find($id);$/;"	v
+arr	SubmitController.php	/^           $arr = array("status" => 1, "message" => "form is not open to submission");$/;"	v
+arr	SubmitController.php	/^        $arr = array("status" => 1, "message" => $submit->id);$/;"	v
+approve	SubmitController.php	/^    public function approve($id){$/;"	f
+submit	SubmitController.php	/^        $submit = Submitted::find($id)->first();$/;"	v
+arr	SubmitController.php	/^           $arr = array("status" => 1, "message" => "form is not open to submission");$/;"	v
+status	SubmitController.php	/^        $status = $submit->status;$/;"	v
+arr	SubmitController.php	/^            $arr = array("status" => 1, "message" => "approved");$/;"	v
+arr	SubmitController.php	/^            $arr = array("status" => 0, "message" => "cant be approved");$/;"	v
+resend	SubmitController.php	/^    public function resend($id){$/;"	f
+submit	SubmitController.php	/^        $submit = Submitted::find($id)->first();$/;"	v
+arr	SubmitController.php	/^           $arr = array("status" => 1, "message" => "form is not open to submission");$/;"	v
+status	SubmitController.php	/^        $status = $submit->status;$/;"	v
+arr	SubmitController.php	/^            $arr = array("status" => 1, "message" => "resent");$/;"	v
+arr	SubmitController.php	/^            $arr = array("status" => 0, "message" => "cant be resent");$/;"	v
+getForm	SubmitController.php	/^    public function getForm($id){$/;"	f
+form	SubmitController.php	/^        $form = Submitted::find($id);$/;"	v
+form_id	SubmitController.php	/^        $form_id = $form->form_id;$/;"	v
+question_index	SubmitController.php	/^        $question_index = Questions::where("form_id", $form_id)->get();$/;"	v
+answer_index	SubmitController.php	/^        $answer_index = Answers::where("submitted_id", $id)->latest()->get();$/;"	v
+forms	SubmitController.php	/^        $forms = Form::find($form_id);$/;"	v
+data	SubmitController.php	/^        $data = $question_index->toArray();$/;"	v
+questions	SubmitController.php	/^            $questions = $question_index[$x]->question;$/;"	v
+questions_id	SubmitController.php	/^            $questions_id = $question_index[$x]->id;$/;"	v
+answers	SubmitController.php	/^                $answers = $answer_index[$x]->answer;$/;"	v
+answers_id	SubmitController.php	/^                $answers_id = $answer_index[$x]->question_id;$/;"	v
+status	SubmitController.php	/^    public function status($id){$/;"	f
+form	SubmitController.php	/^    	$form = Submitted::find($id)->first();$/;"	v
+availableForms	SubmitController.php	/^   public function availableForms($id){$/;"	f
+submit	SubmitController.php	/^        $submit = Submitted::where("user_id", $id)->get();$/;"	v
+data	SubmitController.php	/^        $data = null;$/;"	v
+index	SubmitController.php	/^	$index = 0;$/;"	v
+form_id	SubmitController.php	/^	        $form_id = $submit[$x]->form_id;$/;"	v
+forms	SubmitController.php	/^            	$forms = Form::find($form_id);$/;"	v
+counselorForms	SubmitController.php	/^    public function counselorForms($id){$/;"	f
+users	SubmitController.php	/^    	$users = User::where("counselor_id", $id)->get();$/;"	v
+data	SubmitController.php	/^        $data = null;$/;"	v
+index	SubmitController.php	/^        $index = 0;$/;"	v
+set	SubmitController.php	/^        $set = false;$/;"	v
+submit	SubmitController.php	/^	    $submit = Submitted::where("user_id", $users[$x]->id)->get();$/;"	v
+form	SubmitController.php	/^		   $form = Form::where("id", $submit[$y]->form_id)->get()->first();$/;"	v
+data	SubmitController.php	/^	$data = array_filter($data);$/;"	v
+RoomController	RoomController.php	/^class RoomController extends Controller$/;"	c
+joinRoom	RoomController.php	/^    public function joinRoom($id, $user_id){$/;"	f
+room	RoomController.php	/^		$room = Rooms::find($id);$/;"	v
+user	RoomController.php	/^		$user = User::find($user_id);$/;"	v
+leaveRoom	RoomController.php	/^	public function leaveRoom($id, $user_id){$/;"	f
+room	RoomController.php	/^		$room = Rooms::find($id);$/;"	v
+user	RoomController.php	/^		$user = User::find($user_id);$/;"	v
+sendMessage	RoomController.php	/^	public function sendMessage(Request $request){$/;"	f
+validator	RoomController.php	/^		$validator = Validator::make($request->all(), [$/;"	v
+messages	RoomController.php	/^			$messages = $validator->errors();$/;"	v
+arr	RoomController.php	/^			$arr = array("status" => 0, "message" => $messages->first());$/;"	v
+room	RoomController.php	/^			$room = Rooms::find($request->chat_id);$/;"	v
+arr	RoomController.php	/^				$arr = array("status" => 0, "message" => "User not found in this chat");$/;"	v
+getMessage	RoomController.php	/^	public function getMessage($id){$/;"	f
+room	RoomController.php	/^		$room = Rooms::find($id);$/;"	v
+isRoomEmpty	RoomController.php	/^	public function isRoomEmpty($id){$/;"	f
+room	RoomController.php	/^		$room = Rooms::find($id);$/;"	v
+arr	RoomController.php	/^			$arr = array("status" => 1, "message" => "The room is Empty");$/;"	v
+arr	RoomController.php	/^			$arr = array("status" => 0, "message" => "The room is not Empty");$/;"	v
+isRoomFull	RoomController.php	/^	public function isRoomFull($id){$/;"	f
+room	RoomController.php	/^		$room = Rooms::find($id);$/;"	v
+arr	RoomController.php	/^			$arr = array("status" => 1, "message" => "The room is Full");$/;"	v
+arr	RoomController.php	/^			$arr = array("status" => 0, "message" => "The room is not Full");$/;"	v
+emptyRoom	RoomController.php	/^	public function emptyRoom($id){$/;"	f
+room	RoomController.php	/^		$room = Rooms::find($id);$/;"	v
+arr	RoomController.php	/^		$arr = array("status" => 1, "message" => "Room is now empty.");$/;"	v
+isNewMessage	RoomController.php	/^	public function isNewMessage($id){$/;"	f
+user	RoomController.php	/^		$user = User::find($id);$/;"	v
+role	RoomController.php	/^		$role = -1;$/;"	v
+role	RoomController.php	/^			$role = "student";$/;"	v
+role	RoomController.php	/^			$role = "counselor";$/;"	v
+rooms	RoomController.php	/^		$rooms = Rooms::where($role + "_id", -1 * $id);$/;"	v
+FormController	FormController.php	/^class FormController extends Controller$/;"	c
+register	FormController.php	/^    public function register(Request $request){$/;"	f
+validator	FormController.php	/^        $validator = Validator::make($request->all(), [$/;"	v
+messages	FormController.php	/^            $messages = $validator->errors();$/;"	v
+arr	FormController.php	/^            $arr = array("status" => 0, "message" => $messages->first());$/;"	v
+form	FormController.php	/^            $form = new Form;$/;"	v
+arr	FormController.php	/^            $arr = array("status" => 1, "message" => $form->id);$/;"	v
+getForm	FormController.php	/^    public function getForm($id){$/;"	f
+questions	FormController.php	/^        $questions = Questions::where("form_id", $id)->first();$/;"	v
+form	FormController.php	/^           	$form = Form::find($id);$/;"	v
+data	FormController.php	/^	   	$data = $form->toArray();$/;"	v
+questions	FormController.php	/^           	$questions = Questions::where("form_id", $id)->get();$/;"	v
+data	FormController.php	/^		$data = $questions->toArray();$/;"	v
+questions_form	FormController.php	/^		    $questions_form = $questions[$x]->form_id;$/;"	v
+questions_id	FormController.php	/^		    $questions_id = $questions[$x]->id;$/;"	v
+Controller	Controller.php	/^class Controller extends BaseController$/;"	c
