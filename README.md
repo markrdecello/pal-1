@@ -478,7 +478,7 @@ return {
 
 ##### This Diagram will help clarify the order in which Forms, Questions and Answers will need to be registered and submitted.
 
-![Alt](./db.png)
+![Alt](https://imgur.com/a/P4Depru)
 
 
 
